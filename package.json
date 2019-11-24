@@ -1,7 +1,7 @@
 {
-  "name": "react_template",
+  "name": "oot-randomizer-buddy",
   "version": "2.0.0",
-  "description": "A website by Troy Chryssos",
+  "description": "A site to help keep track of acquired items while doing an oot randomizer run",
   "main": "app.js",
   "repository": "",
   "author": "<troychryssos@gmail.com>",
