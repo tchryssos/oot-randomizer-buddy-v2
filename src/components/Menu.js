@@ -21,6 +21,7 @@ const styles = {
 	},
 	menuDropdown: {
 		display: 'none',
+		flexDirection: 'column',
 		backgroundColor: darkBlue,
 		border: [['solid', 1, gold]],
 		boxShadow: [[2, 2, 'rgba(0,0,0,0.5)']],
@@ -33,24 +34,33 @@ const styles = {
 		left: 0,
 	},
 	openDropdown: {
-		display: 'block',
+		display: 'flex',
+	},
+	closeButton: {
+		cursor: 'pointer',
+		alignSelf: 'flex-end',
+		color: gold,
 	},
 }
 
 const Menu = ({ classes }) => {
 	const [isMenuOpen, setMenuOpen] = useState(false)
 	const openMenu = useCallback(() => setMenuOpen(true))
-	const closeMenu = useCallback(() => setMenuOpen(false))
-	const {
-		toggleView,
-		toggleRequired,
-		toggleProgressionMode,
-		isSimpleView,
-		isRequiredOnly,
-		isProgressionMode,
-	} = useContext(DisplayContext)
+	const closeMenu = useCallback((e) => {
+		e.stopPropagation()
+		setMenuOpen(false)
+	})
+	// const {
+	// 	toggleView,
+	// 	toggleRequired,
+	// 	toggleProgressionMode,
+	// 	isSimpleView,
+	// 	isRequiredOnly,
+	// 	isProgressionMode,
+	// } = useContext(DisplayContext)
 	return (
 		<div className={classes.menuWrapper} onClick={openMenu}>
+
 			{/* UNOPENED MENU - START */}
 			<button className={classes.menuButton}>
 				<img src={Hamburger} alt="Open menu" />
@@ -65,9 +75,18 @@ const Menu = ({ classes }) => {
 					{ [classes.openDropdown]: isMenuOpen },
 				)}
 			>
-				open menu
+				<button
+					className={clsx(
+						classes.menuButton,
+						classes.closeButton,
+					)}
+					onClick={closeMenu}
+				>
+					X
+				</button>
 			</div>
 			{/* OPENED MENU - END */}
+
 		</div>
 	)
 }
