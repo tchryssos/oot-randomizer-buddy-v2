@@ -54,7 +54,7 @@ const Menu = ({ classes }) => {
 	})
 	const {
 		toggleView,
-		toggleRequired,
+		toggleRequiredOnly,
 		toggleProgressionMode,
 		isSimpleView,
 		isRequiredOnly,
@@ -93,7 +93,7 @@ const Menu = ({ classes }) => {
 				/>
 				<ViewCheckbox
 					label="Required Items Only"
-					onClick={toggleRequired}
+					onClick={toggleRequiredOnly}
 					checkedValue={isRequiredOnly}
 				/>
 				<ViewCheckbox
