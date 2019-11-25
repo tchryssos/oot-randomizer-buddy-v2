@@ -1,7 +1,23 @@
 import React, { useState, useCallback, useMemo } from 'react'
+import injectSheet from 'react-jss'
 import DisplayContext from 'contexts/display'
 
-const Home = () => {
+import Menu from 'components/Menu'
+
+import { gold, darkBlue } from 'constants/styles/colors'
+
+const styles = {
+	homeWrapper: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		height: '100%',
+		backgroundColor: darkBlue,
+		color: gold,
+	},
+}
+
+const Home = ({ classes }) => {
 	const [isSimpleView, setSimpleView] = useState(true)
 	const [isRequiredOnly, setRequiredOnly] = useState(true)
 	const [isProgressionMode, setProgressionMode] = useState(false)
@@ -25,11 +41,11 @@ const Home = () => {
 
 	return (
 		<DisplayContext.Provider value={context}>
-			<div>
-				what a good site
+			<div className={classes.homeWrapper}>
+				<Menu />
 			</div>
 		</DisplayContext.Provider>
 	)
 }
 
-export default Home
+export default injectSheet(styles)(Home)
