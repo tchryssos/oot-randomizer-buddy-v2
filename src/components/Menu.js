@@ -3,6 +3,7 @@ import injectSheet from 'react-jss'
 import DisplayContext from 'contexts/display'
 
 import Body from 'components/Body'
+import ViewCheckbox from 'components/ViewCheckbox'
 import Hamburger from 'static/icons/hamburger.svg'
 
 import { darkBlue, gold } from 'constants/styles/colors'
@@ -39,6 +40,7 @@ const styles = {
 	closeButton: {
 		cursor: 'pointer',
 		alignSelf: 'flex-end',
+		fontSize: 20,
 		color: gold,
 	},
 }
@@ -50,14 +52,14 @@ const Menu = ({ classes }) => {
 		e.stopPropagation()
 		setMenuOpen(false)
 	})
-	// const {
-	// 	toggleView,
-	// 	toggleRequired,
-	// 	toggleProgressionMode,
-	// 	isSimpleView,
-	// 	isRequiredOnly,
-	// 	isProgressionMode,
-	// } = useContext(DisplayContext)
+	const {
+		toggleView,
+		toggleRequired,
+		toggleProgressionMode,
+		isSimpleView,
+		isRequiredOnly,
+		isProgressionMode,
+	} = useContext(DisplayContext)
 	return (
 		<div className={classes.menuWrapper} onClick={openMenu}>
 
@@ -84,6 +86,21 @@ const Menu = ({ classes }) => {
 				>
 					X
 				</button>
+				<ViewCheckbox
+					label="Simple View"
+					onClick={toggleView}
+					checkedValue={isSimpleView}
+				/>
+				<ViewCheckbox
+					label="Required Items Only"
+					onClick={toggleRequired}
+					checkedValue={isRequiredOnly}
+				/>
+				<ViewCheckbox
+					label="Item Progression Mode"
+					onClick={toggleProgressionMode}
+					checkedValue={isProgressionMode}
+				/>
 			</div>
 			{/* OPENED MENU - END */}
 

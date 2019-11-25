@@ -21,6 +21,7 @@ const Home = ({ classes }) => {
 	const [isSimpleView, setSimpleView] = useState(true)
 	const [isRequiredOnly, setRequiredOnly] = useState(true)
 	const [isProgressionMode, setProgressionMode] = useState(false)
+	console.log(isRequiredOnly)
 	const toggleView = useCallback(
 		() => setSimpleView(!isSimpleView),
 	)
