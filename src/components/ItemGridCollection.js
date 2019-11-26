@@ -5,9 +5,10 @@ import clsx from 'clsx'
 import DisplayContext from 'contexts/display'
 
 import Body from 'components/Body'
+import ItemIcon from 'components/ItemIcon'
 import Chevron from 'static/icons/chevron.svg'
 
-import { darkBlue, gold } from 'constants/styles/colors'
+import { gold } from 'constants/styles/colors'
 
 const styles = {
 	collectionLabel: {
@@ -18,7 +19,7 @@ const styles = {
 	},
 	collectionToggleButton: {
 		border: 'none',
-		backgroundColor: darkBlue,
+		backgroundColor: 'transparent',
 	},
 	chevron: {
 		transition: '0.1s ease-in-out',
@@ -48,9 +49,7 @@ const Collection = ({ collection, isRequiredOnly, isProgressionMode }) => {
 	return (
 		filteredCollection.map(
 			item => (
-				<div key={item.reference}>
-					{item.name}
-				</div>
+				<ItemIcon key={item.reference} initialReference={item.reference} />
 			),
 		)
 	)

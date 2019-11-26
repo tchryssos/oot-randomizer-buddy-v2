@@ -17,7 +17,7 @@ const styles = {
 		justifyContent: 'space-between',
 	},
 	menuButton: {
-		backgroundColor: darkBlue,
+		backgroundColor: 'transparent',
 		border: 'none',
 	},
 	menuDropdown: {

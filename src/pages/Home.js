@@ -12,8 +12,7 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		height: '100%',
-		backgroundColor: darkBlue,
+		// minHeight: '100%',
 		color: gold,
 	},
 }

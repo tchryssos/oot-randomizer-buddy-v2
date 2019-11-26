@@ -397,9 +397,8 @@ export const ITEMS = {
 		critical: false,
 		dungeon: false,
 		progression: {
-			0: '',
-			1: 'adults_wallet',
-			2: 'giants_wallet',
+			0: 'adults_wallet',
+			1: 'giants_wallet',
 		},
 	},
 	gold_scale: {
