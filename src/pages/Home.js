@@ -3,6 +3,7 @@ import injectSheet from 'react-jss'
 import DisplayContext from 'contexts/display'
 
 import Menu from 'components/Menu'
+import ItemGrid from 'components/ItemGrid'
 
 import { gold, darkBlue } from 'constants/styles/colors'
 
@@ -43,6 +44,7 @@ const Home = ({ classes }) => {
 		<DisplayContext.Provider value={context}>
 			<div className={classes.homeWrapper}>
 				<Menu />
+				<ItemGrid />
 			</div>
 		</DisplayContext.Provider>
 	)
