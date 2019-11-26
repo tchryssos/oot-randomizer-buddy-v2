@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext, useMemo } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 import injectSheet from 'react-jss'
 import clsx from 'clsx'
 
@@ -23,6 +23,13 @@ const styles = {
 	},
 	chevronRotated: {
 		transform: 'rotate(-90deg)',
+	},
+	collection: {
+		display: 'none',
+		flexWrap: 'wrap',
+	},
+	collectionVisible: {
+		display: 'flex',
 	},
 }
 
@@ -74,11 +81,18 @@ const ItemGridCollection = ({ collection, label, classes }) => {
 					{label}
 				</button>
 			</div>
-			<Collection
-				collection={collection}
-				isRequiredOnly={isRequiredOnly}
-				isProgressionMode={isProgressionMode}
-			/>
+			<div
+				className={clsx(
+					classes.collection,
+					{ [classes.collectionVisible]: isCollectionVisible },
+				)}
+			>
+				<Collection
+					collection={collection}
+					isRequiredOnly={isRequiredOnly}
+					isProgressionMode={isProgressionMode}
+				/>
+			</div>
 		</>
 	)
 }
