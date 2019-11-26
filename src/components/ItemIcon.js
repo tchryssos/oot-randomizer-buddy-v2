@@ -11,19 +11,19 @@ const styles = {
 		backgroundColor: 'transparent',
 	},
 	icon: {
-		opacity: '0.5',
+		opacity: '0.2',
 		filter: 'grayscale(65%)',
 		height: 64,
 		width: 64,
 	},
-	iconFound: {
+	iconMissing: {
 		opacity: '1',
 		filter: 'grayscale(0%)',
 	},
 }
 
 const ItemIcon = ({ initialReference, classes }) => {
-	const [isFound, setIsFound] = useState(false)
+	const [isMissing, setisMissing] = useState(true)
 	const [progressionStep, setProgressionStep] = useState(0)
 	const [item, setItem] = useState(ALL_ITEMS[initialReference])
 	const { progression, reference, name, imgOverride } = item
@@ -35,22 +35,28 @@ const ItemIcon = ({ initialReference, classes }) => {
 		}
 	}, [progressionStep])
 
+	useEffect(() => {
+		if (progression && !isProgressionMode) {
+			setItem(ALL_ITEMS[initialReference])
+		}
+	}, [isProgressionMode])
+
 	const onClick = useCallback(() => {
 		if (progression && isProgressionMode) {
-			if (!isFound) {
-				setIsFound(true)
+			if (isMissing) {
+				setisMissing(false)
 			} else {
 				const progPlusOne = progressionStep + 1
 				const nextProgressionStep = (
 					progression[progPlusOne] ? progPlusOne : 0
 				)
-				if (nextProgressionStep === 0) { setIsFound(false) }
+				if (nextProgressionStep === 0) { setisMissing(true) }
 				setProgressionStep(nextProgressionStep)
 			}
 		} else {
-			setIsFound(!isFound)
+			setisMissing(!isMissing)
 		}
-	}, [progressionStep, isFound])
+	}, [progressionStep, isMissing])
 
 	return (
 		<button
@@ -63,7 +69,7 @@ const ItemIcon = ({ initialReference, classes }) => {
 				title={name}
 				className={clsx(
 					classes.icon,
-					{ [classes.iconFound]: isFound },
+					{ [classes.iconMissing]: isMissing },
 				)}
 			/>
 		</button>
