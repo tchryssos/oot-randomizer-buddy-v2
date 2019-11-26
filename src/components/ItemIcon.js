@@ -26,7 +26,7 @@ const ItemIcon = ({ initialReference, classes }) => {
 	const [isFound, setIsFound] = useState(false)
 	const [progressionStep, setProgressionStep] = useState(0)
 	const [item, setItem] = useState(ALL_ITEMS[initialReference])
-	const { progression, reference, name } = item
+	const { progression, reference, name, imgOverride } = item
 	const { isProgressionMode } = useContext(DisplayContext)
 
 	useEffect(() => {
@@ -58,7 +58,7 @@ const ItemIcon = ({ initialReference, classes }) => {
 			className={classes.iconButton}
 		>
 			<img
-				src={require(`../static/images/${reference}.png`)}
+				src={require(`../static/images/${imgOverride || reference}.png`)}
 				alt={name}
 				title={name}
 				className={clsx(

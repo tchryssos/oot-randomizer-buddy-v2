@@ -5,14 +5,13 @@ import DisplayContext from 'contexts/display'
 import Menu from 'components/Menu'
 import ItemGrid from 'components/ItemGrid'
 
-import { gold, darkBlue } from 'constants/styles/colors'
+import { gold } from 'constants/styles/colors'
 
 const styles = {
 	homeWrapper: {
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		// minHeight: '100%',
 		color: gold,
 	},
 }
