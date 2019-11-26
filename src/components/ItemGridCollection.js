@@ -4,15 +4,17 @@ import clsx from 'clsx'
 
 import DisplayContext from 'contexts/display'
 
+import Body from 'components/Body'
 import Chevron from 'static/icons/chevron.svg'
 
-import { darkBlue } from 'constants/styles/colors'
+import { darkBlue, gold } from 'constants/styles/colors'
 
 const styles = {
 	collectionLabel: {
 		width: '100%',
 		display: 'flex',
 		alignItems: 'center',
+		color: gold,
 	},
 	collectionToggleButton: {
 		border: 'none',
@@ -78,8 +80,8 @@ const ItemGridCollection = ({ collection, label, classes }) => {
 						)}
 						alt="collection visibility chevron"
 					/>
-					{label}
 				</button>
+				<Body>{label}</Body>
 			</div>
 			<div
 				className={clsx(

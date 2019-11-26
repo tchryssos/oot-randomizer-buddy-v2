@@ -9,8 +9,8 @@ const styles = {
 	itemGridWrapper: {
 		width: '75%',
 		display: 'flex',
+		flexDirection: 'column',
 		justifyContent: 'center',
-		flexWrap: 'wrap',
 	},
 }
 
