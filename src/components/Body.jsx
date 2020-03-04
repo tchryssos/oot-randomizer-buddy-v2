@@ -1,18 +1,19 @@
 import React from 'react'
-import injectSheet from 'react-jss'
+import { createUseStyles } from 'react-jss'
 import clsx from 'clsx'
 
-const styles = {
+const useStyles = createUseStyles({
 	bodyText: {
 		display: 'inline',
 		fontSize: 16,
 	},
+})
+
+export default ({ children, className }) => {
+	const classes = useStyles()
+	return (
+		<div className={clsx(classes.bodyText, className)}>
+			{children}
+		</div>
+	)
 }
-
-const Body = ({ children, className, classes }) => (
-	<div className={clsx(classes.bodyText, className)}>
-		{children}
-	</div>
-)
-
-export default injectSheet(styles)(Body)

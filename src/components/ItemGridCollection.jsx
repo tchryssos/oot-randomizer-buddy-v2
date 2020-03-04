@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext } from 'react'
-import injectSheet from 'react-jss'
+import { createUseStyles } from 'react-jss'
 import clsx from 'clsx'
 
 import DisplayContext from 'contexts/display'
@@ -10,7 +10,7 @@ import Chevron from 'static/icons/chevron.svg'
 
 import { gold } from 'constants/styles/colors'
 
-const styles = {
+const useStyles = createUseStyles({
 	collectionLabel: {
 		width: '100%',
 		display: 'flex',
@@ -34,12 +34,12 @@ const styles = {
 	collectionVisible: {
 		display: 'flex',
 	},
-}
+})
 
 const Collection = ({ collection, isRequiredOnly, isProgressionMode }) => {
 	let filteredCollection = collection
 	filteredCollection = filteredCollection
-		.filter(item => (isRequiredOnly ? item.critical : item))
+		.filter((item) => (isRequiredOnly ? item.critical : item))
 		.filter((item) => {
 			if (isProgressionMode && item.progression) {
 				return item.reference === item.progression[0]
@@ -48,14 +48,15 @@ const Collection = ({ collection, isRequiredOnly, isProgressionMode }) => {
 		})
 	return (
 		filteredCollection.map(
-			item => (
+			(item) => (
 				<ItemIcon key={item.reference} initialReference={item.reference} />
 			),
 		)
 	)
 }
 
-const ItemGridCollection = ({ collection, label, classes }) => {
+export default ({ collection, label }) => {
+	const classes = useStyles()
 	const [isCollectionVisible, setCollectionVisible] = useState(true)
 	const toggleCollectionVisible = useCallback(
 		() => setCollectionVisible(!isCollectionVisible),
@@ -70,6 +71,7 @@ const ItemGridCollection = ({ collection, label, classes }) => {
 				<button
 					onClick={toggleCollectionVisible}
 					className={classes.collectionToggleButton}
+					type="button"
 				>
 					<img
 						src={Chevron}
@@ -97,5 +99,3 @@ const ItemGridCollection = ({ collection, label, classes }) => {
 		</>
 	)
 }
-
-export default injectSheet(styles)(ItemGridCollection)

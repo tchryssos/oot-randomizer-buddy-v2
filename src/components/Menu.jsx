@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react'
-import injectSheet from 'react-jss'
+import { createUseStyles } from 'react-jss'
 import DisplayContext from 'contexts/display'
 
 import Body from 'components/Body'
@@ -9,7 +9,7 @@ import Hamburger from 'static/icons/hamburger.svg'
 import { darkBlue, gold } from 'constants/styles/colors'
 import clsx from 'clsx'
 
-const styles = {
+const useStyles = createUseStyles({
 	menuWrapper: {
 		width: '100%',
 		display: 'flex',
@@ -43,9 +43,10 @@ const styles = {
 		fontSize: 20,
 		color: gold,
 	},
-}
+})
 
-const Menu = ({ classes }) => {
+export default () => {
+	const classes = useStyles()
 	const [isMenuOpen, setMenuOpen] = useState(false)
 	const openMenu = useCallback(() => setMenuOpen(true))
 	const closeMenu = useCallback((e) => {
@@ -64,7 +65,7 @@ const Menu = ({ classes }) => {
 		<div className={classes.menuWrapper} onClick={openMenu}>
 
 			{/* UNOPENED MENU - START */}
-			<button className={classes.menuButton}>
+			<button type="button" className={classes.menuButton}>
 				<img src={Hamburger} alt="Open menu" />
 			</button>
 			<Body>Ocarina of Time Randomizer Buddy</Body>
@@ -78,6 +79,7 @@ const Menu = ({ classes }) => {
 				)}
 			>
 				<button
+					type="button"
 					className={clsx(
 						classes.menuButton,
 						classes.closeButton,
@@ -107,5 +109,3 @@ const Menu = ({ classes }) => {
 		</div>
 	)
 }
-
-export default injectSheet(styles)(Menu)

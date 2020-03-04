@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react'
-import injectSheet from 'react-jss'
+import { createUseStyles } from 'react-jss'
 
 import DisplayContext from 'contexts/display'
 import { ALL_ITEMS } from 'constants/items'
 import clsx from 'clsx'
 
-const styles = {
+const useStyles = createUseStyles({
 	iconButton: {
 		border: 'none',
 		backgroundColor: 'transparent',
@@ -20,14 +20,18 @@ const styles = {
 		opacity: '1',
 		filter: 'grayscale(0%)',
 	},
-}
+})
 
-const ItemIcon = ({ initialReference, classes }) => {
+export default ({ initialReference }) => {
+	const classes = useStyles()
 	const [isMissing, setisMissing] = useState(true)
 	const [progressionStep, setProgressionStep] = useState(0)
 	const [item, setItem] = useState(ALL_ITEMS[initialReference])
-	const { progression, reference, name, imgOverride } = item
+	const {
+		progression, reference, name, imgOverride,
+	} = item
 	const { isProgressionMode } = useContext(DisplayContext)
+	const src = require(`../static/images/${imgOverride || reference}.png`)
 
 	useEffect(() => {
 		if (progression && isProgressionMode) {
@@ -62,9 +66,10 @@ const ItemIcon = ({ initialReference, classes }) => {
 		<button
 			onClick={onClick}
 			className={classes.iconButton}
+			type="button"
 		>
 			<img
-				src={require(`../static/images/${imgOverride || reference}.png`)}
+				src={src.default}
 				alt={name}
 				title={name}
 				className={clsx(
@@ -75,5 +80,3 @@ const ItemIcon = ({ initialReference, classes }) => {
 		</button>
 	)
 }
-
-export default injectSheet(styles)(ItemIcon)
