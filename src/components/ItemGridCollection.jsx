@@ -6,7 +6,6 @@ import DisplayContext from 'contexts/display'
 
 import Body from 'components/Body'
 import ItemIcon from 'components/ItemIcon'
-import Chevron from 'static/icons/chevron.svg'
 
 import { gold } from 'constants/styles/colors'
 
@@ -27,10 +26,10 @@ const useStyles = createUseStyles({
 		color: gold,
 		fontSize: 32,
 		fontFamily: 'ReturnofGanon',
-		transform: 'rotate(90deg) translateX(2px)',
+		transform: 'rotate(90deg) translate(2px, 4px)',
 	},
 	chevronRotated: {
-		transform: 'rotate(0) translateY(0)',
+		transform: 'rotate(0) translate(0, 0)',
 	},
 	collection: {
 		display: 'none',

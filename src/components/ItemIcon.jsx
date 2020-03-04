@@ -11,6 +11,7 @@ const useStyles = createUseStyles({
 	iconButton: {
 		border: 'none',
 		backgroundColor: 'transparent',
+		cursor: 'pointer',
 	},
 	icon: {
 		opacity: '0.2',

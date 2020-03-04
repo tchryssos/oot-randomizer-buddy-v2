@@ -40,6 +40,11 @@ export default createUseStyles(() => {
 			h1: marPadZero,
 			h2: marPadZero,
 			h3: marPadZero,
+			button: {
+				'&:focus': {
+					outline: 'none',
+				},
+			},
 		},
 	}
 })
