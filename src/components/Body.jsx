@@ -5,7 +5,7 @@ import clsx from 'clsx'
 const useStyles = createUseStyles({
 	bodyText: {
 		display: 'inline',
-		fontSize: 16,
+		fontSize: 32,
 	},
 })
 

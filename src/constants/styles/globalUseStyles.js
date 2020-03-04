@@ -1,6 +1,7 @@
 import { createUseStyles } from 'react-jss'
 
 import { darkBlue } from 'constants/styles/colors'
+import ReturnofGanon from 'static/fonts/ReturnofGanon.ttf'
 
 export default createUseStyles(() => {
 	const marPadZero = {
@@ -17,6 +18,10 @@ export default createUseStyles(() => {
 		'@import': [
 			// Import fonts here
 		],
+		'@font-face': {
+			fontFamily: 'ReturnofGanon',
+			src: `url(${ReturnofGanon})`,
+		},
 		'@global': {
 			html: {
 				...baseStyle,
@@ -25,6 +30,7 @@ export default createUseStyles(() => {
 			body: {
 				...baseStyle,
 				position: 'relative',
+				fontFamily: 'ReturnofGanon',
 			},
 			'#app': baseStyle,
 			div: {

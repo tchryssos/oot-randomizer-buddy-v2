@@ -16,6 +16,9 @@ const useStyles = createUseStyles({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 	},
+	title: {
+		marginRight: 10,
+	},
 	menuButton: {
 		backgroundColor: 'transparent',
 		border: 'none',
@@ -28,20 +31,27 @@ const useStyles = createUseStyles({
 		boxShadow: [[2, 2, 'rgba(0,0,0,0.5)']],
 		margin: 8,
 		padding: 8,
-		paddingBottom: 24,
 		zIndex: 2,
 		position: 'absolute',
 		top: 0,
 		left: 0,
 	},
+	dropdownContent: {
+		position: 'relative',
+		width: '100%',
+		height: '100%',
+	},
 	openDropdown: {
 		display: 'flex',
 	},
 	closeButton: {
+		position: 'absolute',
+		top: 0,
+		right: 0,
 		cursor: 'pointer',
-		alignSelf: 'flex-end',
 		fontSize: 20,
 		color: gold,
+		fontFamily: 'ReturnofGanon',
 	},
 })
 
@@ -68,7 +78,7 @@ export default () => {
 			<button type="button" className={classes.menuButton}>
 				<img src={Hamburger} alt="Open menu" />
 			</button>
-			<Body>Ocarina of Time Randomizer Buddy</Body>
+			<Body className={classes.title}>Ocarina of Time Randomizer Buddy</Body>
 			{/* UNOPENED MENU - END */}
 
 			{/* OPENED MENU - START */}
@@ -78,31 +88,33 @@ export default () => {
 					{ [classes.openDropdown]: isMenuOpen },
 				)}
 			>
-				<button
-					type="button"
-					className={clsx(
-						classes.menuButton,
-						classes.closeButton,
-					)}
-					onClick={closeMenu}
-				>
-					X
-				</button>
-				<ViewCheckbox
-					label="Simple View"
-					onClick={toggleView}
-					checkedValue={isSimpleView}
-				/>
-				<ViewCheckbox
-					label="Required Items Only"
-					onClick={toggleRequiredOnly}
-					checkedValue={isRequiredOnly}
-				/>
-				<ViewCheckbox
-					label="Item Progression Mode"
-					onClick={toggleProgressionMode}
-					checkedValue={isProgressionMode}
-				/>
+				<div className={classes.dropdownContent}>
+					<button
+						type="button"
+						className={clsx(
+							classes.menuButton,
+							classes.closeButton,
+						)}
+						onClick={closeMenu}
+					>
+						X
+					</button>
+					<ViewCheckbox
+						label="Simple View"
+						onClick={toggleView}
+						checkedValue={isSimpleView}
+					/>
+					<ViewCheckbox
+						label="Required Items Only"
+						onClick={toggleRequiredOnly}
+						checkedValue={isRequiredOnly}
+					/>
+					<ViewCheckbox
+						label="Item Progression Mode"
+						onClick={toggleProgressionMode}
+						checkedValue={isProgressionMode}
+					/>
+				</div>
 			</div>
 			{/* OPENED MENU - END */}
 

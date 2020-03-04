@@ -22,10 +22,15 @@ const useStyles = createUseStyles({
 		backgroundColor: 'transparent',
 	},
 	chevron: {
+		display: 'block',
 		transition: '0.1s ease-in-out',
+		color: gold,
+		fontSize: 32,
+		fontFamily: 'ReturnofGanon',
+		transform: 'rotate(90deg) translateX(2px)',
 	},
 	chevronRotated: {
-		transform: 'rotate(-90deg)',
+		transform: 'rotate(0) translateY(0)',
 	},
 	collection: {
 		display: 'none',
@@ -73,14 +78,14 @@ export default ({ collection, label }) => {
 					className={classes.collectionToggleButton}
 					type="button"
 				>
-					<img
-						src={Chevron}
+					<span
 						className={clsx(
 							classes.chevron,
 							{ [classes.chevronRotated]: !isCollectionVisible },
 						)}
-						alt="collection visibility chevron"
-					/>
+					>
+						&gt;
+					</span>
 				</button>
 				<Body>{label}</Body>
 			</div>

@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react'
+import React, {
+	useState, useCallback, useContext, useEffect,
+} from 'react'
 import { createUseStyles } from 'react-jss'
 
 import DisplayContext from 'contexts/display'

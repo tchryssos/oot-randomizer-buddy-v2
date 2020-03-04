@@ -5,11 +5,12 @@ const useStyles = createUseStyles({
 	checkboxRow: {
 		display: 'flex',
 		alignItems: 'center',
+		fontSize: 24,
 	},
 	checkbox: {
-		height: 16,
-		width: 16,
-		marginLeft: 8,
+		height: 24,
+		width: 24,
+		marginLeft: 4,
 	},
 })
 
@@ -22,7 +23,7 @@ export default ({ label, checkedValue, onClick }) => {
 				type="checkbox"
 				checked={checkedValue}
 				onClick={onClick}
-				className="viewCheckbox"
+				className={classes.checkbox}
 				readOnly
 			/>
 		</div>
