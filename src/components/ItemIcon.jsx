@@ -34,7 +34,6 @@ export default ({ initialReference }) => {
 		progression, reference, name, imgOverride,
 	} = item
 	const { isProgressionMode } = useContext(DisplayContext)
-	const src = require(`../static/images/${imgOverride || reference}.png`)
 
 	useEffect(() => {
 		if (progression && isProgressionMode) {
@@ -72,7 +71,7 @@ export default ({ initialReference }) => {
 			type="button"
 		>
 			<img
-				src={src.default}
+				src={require(`../static/images/${imgOverride || reference}.png`).default}
 				alt={name}
 				title={name}
 				className={clsx(

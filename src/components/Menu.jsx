@@ -72,10 +72,10 @@ export default () => {
 		isProgressionMode,
 	} = useContext(DisplayContext)
 	return (
-		<div className={classes.menuWrapper} onClick={openMenu}>
+		<div className={classes.menuWrapper}>
 
 			{/* UNOPENED MENU - START */}
-			<button type="button" className={classes.menuButton}>
+			<button type="button" className={classes.menuButton} onClick={openMenu}>
 				<img src={Hamburger} alt="Open menu" />
 			</button>
 			<Body className={classes.title}>Ocarina of Time Randomizer Buddy</Body>
